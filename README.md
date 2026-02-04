@@ -14,9 +14,11 @@ A macOS menu bar app to view and kill processes running on development ports (30
 - **Lightweight** - Lives in your menu bar, hidden from Dock
 - **Launch at login** - Optional setting to start automatically
 
-## Screenshot
+## Screenshots
 
-<img width="280" alt="Port Killer Screenshot" src="https://github.com/user-attachments/assets/placeholder.png">
+| Port List | Menu Bar | Settings |
+|:---------:|:--------:|:--------:|
+| ![Port List](screenshots/port-list.png) | ![Menu Bar](screenshots/menu-bar.png) | ![Settings](screenshots/settings.png) |
 
 ## Installation
 

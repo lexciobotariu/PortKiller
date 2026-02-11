@@ -12,7 +12,7 @@ struct PortListView: View {
                 mainContent
             }
         }
-        .frame(width: 280)
+        .frame(width: 340)
         .task {
             await state.refresh()
         }
@@ -42,9 +42,25 @@ struct PortListView: View {
 
             Divider()
 
+            // Search
+            if !state.processes.isEmpty || state.isScanning {
+                HStack(spacing: 6) {
+                    Image(systemName: "magnifyingglass")
+                        .foregroundStyle(.tertiary)
+                    TextField("Search port or process…", text: $state.searchText)
+                        .textFieldStyle(.plain)
+                }
+                .padding(.horizontal, 12)
+                .padding(.vertical, 8)
+
+                Divider()
+            }
+
             // Content
             if state.processes.isEmpty && !state.isScanning {
                 emptyStateView
+            } else if state.filteredProcesses.isEmpty {
+                noResultsView
             } else {
                 processListView
             }
@@ -64,15 +80,23 @@ struct PortListView: View {
         .padding(.vertical, 40)
     }
 
+    private var noResultsView: some View {
+        Text("No matching processes")
+            .font(.subheadline)
+            .foregroundStyle(.secondary)
+            .frame(maxWidth: .infinity)
+            .padding(.vertical, 30)
+    }
+
     private var processListView: some View {
         ScrollView {
             LazyVStack(spacing: 0) {
-                ForEach(state.processes) { process in
+                ForEach(state.filteredProcesses) { process in
                     PortRowView(process: process) {
                         state.killProcess(process)
                     }
 
-                    if process.id != state.processes.last?.id {
+                    if process.id != state.filteredProcesses.last?.id {
                         Divider()
                             .padding(.leading, 12)
                     }

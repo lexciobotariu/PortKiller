@@ -12,7 +12,7 @@ final class PortScanner {
         // -sTCP:LISTEN: only listening sockets
         // -P: show port numbers (not service names)
         // -n: no DNS resolution (faster)
-        guard let output = executeCommand("/usr/sbin/lsof", arguments: ["-iTCP", "-sTCP:LISTEN", "-P", "-n"]),
+        guard let output = executeCommand("/usr/sbin/lsof", arguments: ["+c0", "-iTCP", "-sTCP:LISTEN", "-P", "-n"]),
               !output.isEmpty else {
             return []
         }

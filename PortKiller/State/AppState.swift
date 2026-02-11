@@ -4,6 +4,16 @@ import SwiftUI
 final class AppState {
     var processes: [PortProcess] = []
     var isScanning: Bool = false
+    var searchText: String = ""
+
+    var filteredProcesses: [PortProcess] {
+        let query = searchText.trimmingCharacters(in: .whitespaces)
+        guard !query.isEmpty else { return processes }
+        return processes.filter { process in
+            String(process.port).contains(query)
+            || process.processName.localizedCaseInsensitiveContains(query)
+        }
+    }
 
     private let scanner = PortScanner()
 

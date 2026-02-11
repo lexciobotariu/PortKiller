@@ -16,8 +16,7 @@ struct PortRowView: View {
                 .foregroundStyle(.secondary)
                 .lineLimit(1)
                 .truncationMode(.tail)
-
-            Spacer()
+                .frame(maxWidth: .infinity, alignment: .leading)
 
             Button("Kill") {
                 onKill()
@@ -42,5 +41,5 @@ struct PortRowView: View {
             onKill: {}
         )
     }
-    .frame(width: 280)
+    .frame(width: 340)
 }

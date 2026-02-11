@@ -9,7 +9,9 @@ A macOS menu bar app to view and kill processes running on development ports (30
 ## Features
 
 - **Instant scanning** - Single `lsof` command scans all ports in under 1 second
+- **Search & filter** - Find processes by port number or name
 - **One-click kill** - No confirmation dialogs, just click and it's gone
+- **Full process names** - Shows complete command names, not truncated
 - **Native UI** - Pure SwiftUI with MenuBarExtra
 - **Lightweight** - Lives in your menu bar, hidden from Dock
 - **Launch at login** - Optional setting to start automatically
@@ -24,7 +26,7 @@ A macOS menu bar app to view and kill processes running on development ports (30
 
 ### Download
 
-1. Download `PortKiller-v1.0.0.zip` from [Releases](https://github.com/lexciobotariu/PortKiller/releases)
+1. Download `PortKiller-v1.1.0.zip` from [Releases](https://github.com/lexciobotariu/PortKiller/releases)
 2. Unzip and drag `PortKiller.app` to Applications
 3. On first launch, right-click → **Open** (to bypass Gatekeeper)
 
